@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocShare</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="toast" class="toast" role="status" style="display:none"></div>
+
+<div id="login" class="login" style="display:none">
+  <div class="card">
+    <h1>DocShare</h1>
+    <p class="muted">Pick a demo account (password: <code>password</code>)</p>
+    <div id="userPicks" class="picks"></div>
+    <label>Username <input id="loginUser" autocomplete="username"></label>
+    <label>Password <input id="loginPass" type="password" autocomplete="current-password"></label>
+    <button id="loginBtn" class="primary" type="button">Log in</button>
+    <p id="loginErr" class="error" role="alert"></p>
+  </div>
+</div>
+
+<div id="app" class="app" style="display:none">
+  <header>
+    <strong class="brand">DocShare</strong>
+    <span class="spacer"></span>
+    <span id="whoami"></span>
+    <button id="resetBtn" type="button">Reset demo data</button>
+    <button id="logoutBtn" type="button">Log out</button>
+  </header>
+  <div class="body">
+    <aside>
+      <button id="newBtn" class="primary" type="button">New document</button>
+      <label class="upload">Import .txt, .md or .html file
+        <input id="fileIn" type="file" accept=".txt,.md,.markdown,.html,.htm">
+      </label>
+      <h3>My documents</h3><ul id="ownList"></ul>
+      <h3>Shared with me</h3><ul id="sharedList"></ul>
+    </aside>
+    <main>
+      <p id="empty" class="muted pad">Select a document, create one, or import a file.</p>
+      <div id="editorWrap" style="display:none">
+        <div class="titlebar">
+          <input id="title" maxlength="120" aria-label="Document title">
+          <span id="roleBadge" class="badge"></span>
+          <button id="saveBtn" type="button">Save</button>
+          <span id="status" class="muted"></span>
+        </div>
+        <div class="toolbar" id="toolbar">
+          <button type="button" data-cmd="bold" title="Bold"><b>B</b></button>
+          <button type="button" data-cmd="italic" title="Italic"><i>I</i></button>
+          <button type="button" data-cmd="underline" title="Underline"><u>U</u></button>
+          <button type="button" data-block="h1">Heading 1</button>
+          <button type="button" data-block="h2">Heading 2</button>
+          <button type="button" data-block="p">Normal</button>
+          <button type="button" data-cmd="insertUnorderedList">Bullets</button>
+          <button type="button" data-cmd="insertOrderedList">Numbers</button>
+        </div>
+        <div id="editor" class="editor" contenteditable="true" spellcheck="true"></div>
+        <section id="sharePanel" class="share" style="display:none">
+          <h3>Sharing</h3>
+          <div class="row">
+            <select id="shareUser" aria-label="Person to share with"></select>
+            <select id="sharePerm" aria-label="Permission">
+              <option value="edit">Can edit</option>
+              <option value="view">Can view</option>
+            </select>
+            <button id="shareBtn" class="primary" type="button">Share</button>
+          </div>
+          <ul id="shareList"></ul>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/3.2.4/dexie.min.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
