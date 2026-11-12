@@ -7,6 +7,7 @@ A small document editor with sharing, file import and persistence. It runs entir
 - **Github:** [Github Repository Link](https://github.com/AntonM-248/DocShare)
 - **Deployment:** [Deployed Site](https://antonm-248.github.io/DocShare/)
 - **Google Drive:** https://drive.google.com/drive/folders/1RlbLMMx-raqPhpDUiMtatIFJwmuhrEZk?usp=drive_link
+- **Loom Video:** [Video Link](https://www.loom.com/share/925cb1b3edbe4a1c930ef71593b10ddb)
 
 ## Run it
 
@@ -38,3 +39,7 @@ Open `tests.html`. It runs 8 tests against the data layer on a throwaway databas
 **Priorities:** a clean API boundary with permission checks outside the UI, then a coherent editing flow, then compatibility (plain scripts without a build step or modules, ES5-style code, `contenteditable` with `execCommand`).
 
 **Known tradeoffs (simulation only):** passwords are plain text and login is client-side; a real version needs a server, hashed passwords and real sessions. Last write wins (no real-time collaboration; that would need CRDTs or OT). `document.execCommand` is deprecated but is the most widely supported way to get rich text without a library. Content is sanitized with a small custom function; a real app should use a vetted library such as DOMPurify. No document deletion yet.
+
+## AI Usage
+
+Claude was used for code generation and assistance with overall design, particularly with implementing the persistence layer.
